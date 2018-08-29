@@ -1,0 +1,38 @@
+#!/bin/bash
+# Scripted by Steven E. Ventimiglia
+
+# Project Root
+project=/Users/Steven/Sites/Admin/
+
+# Header/Footer Paths
+header=${project}_layout/header.htm
+footer=${project}_layout/footer.htm
+
+# View/Source Paths (*.htm)
+view_source=${project}_views/*.htm
+
+# Build Destination
+view_dest=${project}www/
+
+for i in ${view_source}; do
+	
+	# --------------------------------
+	# Print Page Set
+	# -------------------------------- 
+	echo
+	printf "$(basename ${i} .htm):\n"
+	echo "--------------------------------------------------"
+	printf "${header}\n"
+	printf "${i}\n"
+	printf "${footer}\n"
+
+	# --------------------------------
+	# Concatenate Page Set 
+	# -------------------------------- 
+	cat ${header} ${i} ${footer} &> ${view_dest}$(basename ${i} .htm).html
+	echo "--------------------------------------------------"
+	printf "✓ ${view_dest}$(basename ${i} .htm).html\n"	
+	echo
+
+done
+

@@ -1,0 +1,3 @@
+## Rsync
+rsync -avz [path_src] [path_dest] --delete-during
+rsync -avz [path_src] [path_dest] --delete-before
